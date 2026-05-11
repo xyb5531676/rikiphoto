@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Riki Photos — Professional portrait and property photography in Brisbane. Travel photography available Australia-wide and internationally.">
-  <meta name="keywords" content="photography Brisbane, portrait photographer Brisbane, property photography Brisbane, real estate photography, travel photographer Australia">
+  <meta name="description" content="Riki Photos — Professional portrait, property and event photography in Brisbane. Wedding, party & celebration photography plus travel photography Australia-wide and internationally.">
+  <meta name="keywords" content="photography Brisbane, portrait photographer Brisbane, property photography Brisbane, event photographer Brisbane, wedding photography Brisbane, party photographer, travel photographer Australia">
   <meta name="author" content="Riki Photos">
   <meta property="og:title" content="Riki Photos — Brisbane Photography">
-  <meta property="og:description" content="Professional portrait and property photography in Brisbane. Travel photography available worldwide.">
+  <meta property="og:description" content="Professional portrait, property and event photography in Brisbane. Travel photography available worldwide.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.rikiphotos.com">
-  <title>Riki Photos — Portrait & Property Photography Brisbane</title>
+  <title>Riki Photos — Portrait, Property & Event Photography Brisbane</title>
   <style>
 /* ═══════════════════════════════════════════════
    RIKI PHOTOS — Main Stylesheet
@@ -849,6 +849,130 @@ footer {
 }
 .footer-links a:hover { color: var(--gold-light); }
 
+/* ── PACKAGES ── */
+.packages-section { padding: 80px 60px 100px; background: var(--warm-white); }
+
+.packages-header { margin-bottom: 56px; }
+.packages-header .section-title { font-size: 40px; margin-bottom: 0; }
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 28px;
+}
+
+.package-card {
+  background: var(--cream);
+  padding: 44px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  border-bottom: 2px solid transparent;
+  transition: background 0.4s, border-color 0.4s;
+}
+.package-card:hover { background: var(--cream2); border-bottom-color: var(--gold-pale); }
+
+.package-card--featured {
+  background: var(--dark);
+  border-bottom-color: var(--gold) !important;
+}
+.package-card--featured:hover { background: var(--mid); }
+
+.pkg-badge {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--gold);
+  color: var(--cream);
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  padding: 6px;
+}
+
+.pkg-eyebrow {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+.package-card--featured .pkg-eyebrow { color: var(--gold-light); }
+
+.pkg-name {
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+.package-card--featured .pkg-name { color: var(--cream); }
+
+.pkg-ideal {
+  font-size: 12px;
+  color: var(--light-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-style: italic;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 20px;
+}
+.package-card--featured .pkg-ideal { color: rgba(245,240,232,0.45); border-bottom-color: rgba(245,240,232,0.1); }
+
+.pkg-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+  flex: 1;
+}
+.pkg-list li {
+  font-size: 13px;
+  color: var(--muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.6;
+}
+.pkg-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 11px;
+}
+.package-card--featured .pkg-list li { color: rgba(245,240,232,0.65); }
+.package-card--featured .pkg-list li::before { color: var(--gold-light); }
+
+.package-card .btn-ghost { align-self: flex-start; }
+.package-card--featured .btn-primary { align-self: flex-start; }
+.package-card--featured .btn-ghost {
+  border-color: rgba(245,240,232,0.3);
+  color: rgba(245,240,232,0.7);
+}
+.package-card--featured .btn-ghost:hover {
+  border-color: var(--gold-light);
+  color: var(--gold-light);
+}
+
+.packages-note {
+  font-size: 12px;
+  color: var(--light-muted);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+.packages-note a { color: var(--gold); border-bottom: 0.5px solid var(--gold-pale); }
+
+/* bullet-list strong */
+.bullet-list li strong { color: var(--dark); font-weight: 600; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .hero-title { font-size: 48px; }
@@ -862,6 +986,8 @@ footer {
   .process-step:nth-child(2) { border-right: none; }
   .process-step:nth-child(3),
   .process-step:nth-child(4) { border-top: 0.5px solid var(--border); }
+  .packages-grid { grid-template-columns: 1fr; gap: 2px; }
+  .package-card--featured { order: -1; }
 }
 
 @media (max-width: 768px) {
@@ -895,6 +1021,7 @@ footer {
   .process-steps { grid-template-columns: 1fr; }
   .process-step,
   .process-step:not(:first-child) { padding: 28px 0; border-right: none; border-top: 0.5px solid var(--border); }
+  .packages-section { padding: 60px 24px; }
   .contact-section { padding: 60px 24px; }
   .contact-grid { grid-template-columns: 1fr; max-width: 100%; }
   .form-row { grid-template-columns: 1fr; }
@@ -926,7 +1053,7 @@ footer {
     <ul class="nav-links">
       <li><a href="#portrait">Portrait</a></li>
       <li><a href="#property">Property</a></li>
-      <li><a href="#travel">Travel</a></li>
+      <li><a href="#events">Events &amp; Travel</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Book Now</a></li>
@@ -938,7 +1065,7 @@ footer {
     <div class="hero-left">
       <p class="hero-eyebrow">Brisbane · Australia · Worldwide</p>
       <h1 class="hero-title">Every Frame<br>Tells <em>Your</em><br>Story</h1>
-      <p class="hero-sub">Professional portrait and property photography in Brisbane. We travel with you — capturing moments that feel refined, natural, and timeless.</p>
+      <p class="hero-sub">Professional portrait, property and event photography in Brisbane — plus travel photography wherever your journey takes you.</p>
       <div class="hero-actions">
         <a href="#portfolio" class="btn-primary">View Portfolio</a>
         <a href="#contact" class="btn-ghost">Book a Session</a>
@@ -1034,15 +1161,16 @@ footer {
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" id="events">
         <div class="service-num">03</div>
-        <h3 class="service-name">Travel Photography</h3>
-        <p class="service-desc">Your personal travel photographer, accompanying you across Australia and beyond — documenting every authentic moment of your journey.</p>
+        <h3 class="service-name">Events &amp; Travel</h3>
+        <p class="service-desc">From weddings and birthday parties to corporate events and intimate gatherings — we capture every candid laugh, heartfelt moment, and spontaneous celebration as it happens.</p>
         <div class="service-tags">
-          <span class="tag">Companion</span>
-          <span class="tag">Australia</span>
-          <span class="tag">International</span>
-          <span class="tag">Documentary</span>
+          <span class="tag">Weddings</span>
+          <span class="tag">Parties</span>
+          <span class="tag">Corporate</span>
+          <span class="tag">Celebrations</span>
+          <span class="tag">Travel</span>
         </div>
       </div>
 
@@ -1128,12 +1256,12 @@ footer {
     </div>
   </section>
 
-  <!-- ── TRAVEL ── -->
-  <section class="travel-section" id="travel">
+  <!-- ── EVENTS & TRAVEL ── -->
+  <section class="travel-section" id="events">
     <div class="travel-inner">
       <div class="travel-visual">
-        <div class="img-placeholder travel-placeholder" data-label="Travel Photography">
-          <!-- Replace with: <img src="images/travel-hero.jpg" alt="Travel photography by Riki Photos"> -->
+        <div class="img-placeholder travel-placeholder" data-label="Event Photography">
+          <!-- Replace with: <img src="images/events-hero.jpg" alt="Event photography by Riki Photos"> -->
         </div>
         <div class="protect-overlay"></div>
         <div class="watermark-grid" aria-hidden="true">
@@ -1142,28 +1270,85 @@ footer {
           <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
         </div>
         <div class="travel-cities">
-          <span class="city-pill">Brisbane</span>
-          <span class="city-pill">Sydney</span>
-          <span class="city-pill">Gold Coast</span>
-          <span class="city-pill">Melbourne</span>
-          <span class="city-pill">Bali</span>
-          <span class="city-pill">Japan</span>
-          <span class="city-pill">Europe</span>
+          <span class="city-pill">Weddings</span>
+          <span class="city-pill">Birthdays</span>
+          <span class="city-pill">Corporate</span>
+          <span class="city-pill">Engagements</span>
+          <span class="city-pill">Graduations</span>
+          <span class="city-pill">Baby Showers</span>
+          <span class="city-pill">Parties</span>
           <span class="city-pill">+ More</span>
         </div>
       </div>
       <div class="travel-content">
-        <p class="section-label">Travel Photography</p>
-        <h2 class="section-title">Your Journey,<br>Beautifully<br>Documented</h2>
-        <p>We travel with you as your dedicated photographer — capturing candid moments, scenic vistas, and the spirit of each destination. Whether it's a Queensland road trip, a Sydney escape, or an international adventure.</p>
+        <p class="section-label">Events &amp; Travel</p>
+        <h2 class="section-title">Every Moment,<br>Authentically<br>Captured</h2>
+        <p>Life's most meaningful moments happen fast — and they deserve to be remembered. We specialise in candid, documentary-style event photography that tells the real story of your celebration, from the first toast to the last dance.</p>
         <ul class="bullet-list">
-          <li>Full-day and multi-day travel packages available</li>
-          <li>Available throughout Australia and internationally</li>
-          <li>Curated gallery delivered within 7 business days</li>
+          <li><strong>Weddings &amp; Engagements</strong> — Full-day or half-day coverage, from prep to reception</li>
+          <li><strong>Birthday &amp; Milestone Parties</strong> — Kids, adults, and everything in between</li>
+          <li><strong>Corporate Events</strong> — Conferences, team days, product launches, networking</li>
+          <li><strong>Casual Celebrations</strong> — BBQs, reunions, gender reveals, baby showers</li>
+          <li><strong>Travel Photography</strong> — Join us on the road across Australia and internationally</li>
         </ul>
-        <a href="#contact" class="btn-primary">Enquire About Travel</a>
+        <a href="#contact" class="btn-primary">Enquire About Your Event</a>
       </div>
     </div>
+  </section>
+
+  <!-- ── EVENT PACKAGES ── -->
+  <section class="packages-section">
+    <div class="packages-header">
+      <p class="section-label">Event Photography Packages</p>
+      <h2 class="section-title">Find the Right<br>Coverage for You</h2>
+    </div>
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <div class="pkg-eyebrow">2 Hours</div>
+        <h3 class="pkg-name">Snapshot</h3>
+        <p class="pkg-ideal">Ideal for: small parties, casual gatherings, milestone moments</p>
+        <ul class="pkg-list">
+          <li>2 hours on-location coverage</li>
+          <li>Up to 80 edited images</li>
+          <li>Online gallery delivery (5 days)</li>
+          <li>Brisbane metro area</li>
+        </ul>
+        <a href="#contact" class="btn-ghost">Enquire</a>
+      </div>
+
+      <div class="package-card package-card--featured">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-eyebrow">4 Hours</div>
+        <h3 class="pkg-name">Celebration</h3>
+        <p class="pkg-ideal">Ideal for: birthdays, engagements, corporate events, larger parties</p>
+        <ul class="pkg-list">
+          <li>4 hours on-location coverage</li>
+          <li>Up to 200 edited images</li>
+          <li>Online gallery delivery (7 days)</li>
+          <li>Brisbane metro + surrounds</li>
+          <li>1 complimentary A3 print</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Enquire</a>
+      </div>
+
+      <div class="package-card">
+        <div class="pkg-eyebrow">Full Day</div>
+        <h3 class="pkg-name">Full Story</h3>
+        <p class="pkg-ideal">Ideal for: weddings, full-day corporate events, travel days</p>
+        <ul class="pkg-list">
+          <li>Up to 8 hours coverage</li>
+          <li>Unlimited edited images</li>
+          <li>Online gallery delivery (7 days)</li>
+          <li>Australia-wide &amp; international</li>
+          <li>Print package included</li>
+          <li>Second shooter available</li>
+        </ul>
+        <a href="#contact" class="btn-ghost">Enquire</a>
+      </div>
+
+    </div>
+    <p class="packages-note">All packages include high-resolution images via private online gallery. Custom packages available — <a href="#contact">get in touch</a> to discuss your event.</p>
   </section>
 
   <!-- ── ABOUT ── -->
@@ -1267,6 +1452,10 @@ footer {
           <option value="">Select a service...</option>
           <option value="portrait">Portrait Photography</option>
           <option value="property">Property Photography</option>
+          <option value="wedding">Wedding Photography</option>
+          <option value="party">Birthday / Party Photography</option>
+          <option value="corporate">Corporate Event Photography</option>
+          <option value="celebration">Other Celebration / Event</option>
           <option value="travel">Travel Photography</option>
           <option value="other">Other / Not Sure</option>
         </select>
