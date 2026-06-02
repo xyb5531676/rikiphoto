@@ -904,6 +904,12 @@ a.contact-card-val:hover { color: var(--gold-light); }
   margin-bottom: 8px;
   font-weight: 600;
 }
+.label-optional {
+  color: rgba(245, 240, 232, 0.3);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
 
 .form-group input,
 .form-group select,
@@ -1475,6 +1481,10 @@ footer {
         </div>
       </div>
       <div class="form-group">
+        <label for="phone">Phone Number <span class="label-optional">(Optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="+61 400 000 000">
+      </div>
+      <div class="form-group">
         <label for="message">Tell Me About Your Project</label>
         <textarea id="message" name="message" rows="4" placeholder="Share a bit about what you have in mind..." required></textarea>
       </div>
@@ -1588,6 +1598,7 @@ footer {
 
       var name    = document.getElementById('name').value.trim();
       var email   = document.getElementById('email').value.trim();
+      var phone   = document.getElementById('phone').value.trim();
       var message = document.getElementById('message').value.trim();
 
       // Simple validation
@@ -1602,16 +1613,19 @@ footer {
         return;
       }
 
-      // ── TO ACTIVATE FORM SUBMISSION ─────────────────
-      // Option 1: Formspree — replace YOUR_FORM_ID below
-      //   fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ name, email, message })
-      //   });
-      //
-      // Option 2: Netlify Forms — add netlify attribute to <form>
-      //   <form id="contactForm" netlify name="contact">
+      // ── SUBMIT TO GOOGLE FORM (silent / no-cors) ────
+      var GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdRi2KeoJ3Eg-i_iEBPq_6gjaF7x5v8HqfMXJEnLX-L_jtVIA/formResponse';
+      var fd = new FormData();
+      fd.append('entry.169633153', name);     // Name
+      fd.append('entry.1864100966', email);    // Email
+      fd.append('entry.979544958', phone);     // Phone (optional)
+      fd.append('entry.1483506804', message);  // Message
+
+      fetch(GOOGLE_FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: fd
+      }).catch(function () { /* no-cors response is opaque; ignore */ });
       // ────────────────────────────────────────────────
 
       // Show success message
