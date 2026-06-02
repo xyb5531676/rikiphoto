@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Riki Photos — Professional portrait, property and event photography in Brisbane. Wedding, party & celebration photography plus travel photography Australia-wide and internationally.">
-  <meta name="keywords" content="photography Brisbane, portrait photographer Brisbane, property photography Brisbane, event photographer Brisbane, wedding photography Brisbane, party photographer, travel photographer Australia">
+  <meta name="description" content="Portrait photography in Brisbane by Riki Photos — family, children, studio, headshots and pet portraits with a gentle, natural touch.">
   <meta name="author" content="Riki Photos">
-  <meta property="og:title" content="Riki Photos — Brisbane Photography">
-  <meta property="og:description" content="Professional portrait, property and event photography in Brisbane. Travel photography available worldwide.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.rikiphotos.com">
-  <title>Riki Photos — Portrait, Property & Event Photography Brisbane</title>
+  <title>Portrait Photography — Riki Photos Brisbane</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
 /* ═══════════════════════════════════════════════
    RIKI PHOTOS — Main Stylesheet
@@ -443,17 +441,6 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 2px solid transparent;
   transition: background 0.4s, border-color 0.4s;
 }
-.service-card { display: block; text-decoration: none; color: inherit; }
-.service-go {
-  display: inline-block;
-  margin-top: 18px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-.service-card:hover .service-go { color: var(--dark); transform: translateX(4px); }
 .service-card:hover { background: var(--cream2); border-bottom-color: var(--gold); }
 
 .service-num {
@@ -1107,16 +1094,152 @@ footer {
   .hero-actions { flex-direction: column; align-items: flex-start; }
 }
 
-</style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+/* ── SUBPAGE BANNER ── */
+.page-banner {
+  margin-top: var(--nav-h);
+  padding: 90px 60px 70px;
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--border);
+  text-align: center;
+}
+.page-banner .section-label { justify-content: center; margin-bottom: 18px; }
+.page-banner h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.05;
+  color: var(--dark);
+  margin-bottom: 22px;
+}
+.page-banner h1 em { font-style: italic; color: var(--gold); font-weight: 600; }
+.page-banner p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.crumbs {
+  margin-top: 28px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--light-muted);
+}
+.crumbs a { color: var(--gold); }
+.crumbs a:hover { color: var(--dark); }
+.crumbs span { margin: 0 8px; opacity: 0.5; }
+
+/* ── GALLERY ── */
+.gallery-section { padding: 70px 60px 100px; background: var(--warm-white); }
+.gallery {
+  column-count: 3;
+  column-gap: 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 18px;
+  break-inside: avoid;
+  border-radius: 2px;
+  cursor: zoom-in;
+  background: var(--cream2);
+}
+.gallery-item img {
+  position: static;
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(44,36,22,0.28), transparent 45%);
+  opacity: 0; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-cap {
+  position: absolute;
+  left: 16px; bottom: 14px;
+  color: var(--cream);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+.gallery-item:hover .gallery-cap { opacity: 1; transform: translateY(0); }
+
+/* CTA strip below gallery */
+.page-cta {
+  text-align: center;
+  padding: 80px 24px 0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.page-cta h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(28px,4vw,40px);
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+.page-cta h2 em { font-style: italic; color: var(--gold); }
+.page-cta p { color: var(--muted); margin-bottom: 28px; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(28,22,12,0.94);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 2000;
+  padding: 40px;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw; max-height: 88vh;
+  width: auto; height: auto;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+.lightbox-close {
+  position: absolute; top: 24px; right: 32px;
+  color: var(--cream); font-size: 34px;
+  font-family: var(--font-heading);
+  cursor: pointer; line-height: 1;
+  opacity: 0.7; transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
+
+@media (max-width: 768px) {
+  .page-banner { padding: 60px 24px 48px; }
+  .gallery-section { padding: 48px 20px 70px; }
+  .gallery { column-count: 2; column-gap: 12px; }
+  .gallery-item { margin-bottom: 12px; }
+  .lightbox { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .gallery { column-count: 1; }
+}
+
+  </style>
 </head>
 <body>
-
   <!-- ── NAVIGATION ── -->
   <nav id="navbar">
-    <a href="#home" class="logo">
+    <a href="index.html" class="logo">
       <img src="images/logo.png" alt="Riki Photos Logo" class="logo-img">
       <span>RIKI<span class="logo-dot"> · </span>PHOTOS</span>
     </a>
@@ -1124,196 +1247,140 @@ footer {
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="portrait.html">Portrait</a></li>
+      <li><a href="portrait.html" class="active">Portrait</a></li>
       <li><a href="realestate.html">Real Estate</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="#contact" class="nav-cta">Book Now</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Book Now</a></li>
     </ul>
   </nav>
-
-  <!-- ── HERO ── -->
-  <section class="hero" id="home">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Brisbane · Australia</p>
-      <div class="hero-award">
-        <span class="hero-award-icon">★</span>
-        <span class="hero-award-text">Lord Mayor's Photographic Awards 2017 &mdash; Brisbane City Council</span>
+  <header class="page-banner">
+    <p class="section-label">01 · Service</p>
+    <h1>Portrait <em>Photography</em></h1>
+    <p>From intimate headshots to family portraits — capturing the authentic essence of every person with technical precision and a gentle, natural touch.</p>
+    <nav class="crumbs"><a href="index.html">Home</a><span>/</span>Portrait</nav>
+  </header>
+  <section class="gallery-section">
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-girl-studio.jpg" alt="Studio Portrait" loading="lazy">
+        <span class="gallery-cap">Studio Portrait</span>
       </div>
-      <h1 class="hero-title">Every Frame<br>Tells <em>Your</em><br>Story</h1>
-      <p class="hero-sub">Professional portrait, property and event photography in Brisbane — plus travel photography wherever your journey takes you.</p>
-      <div class="hero-actions">
-        <a href="portrait.html" class="btn-primary">View Portfolio</a>
-        <a href="#contact" class="btn-ghost">Book a Session</a>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-girl-roses_light.jpg" alt="Floral Portrait" loading="lazy">
+        <span class="gallery-cap">Floral Portrait</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-girl-teal_light.jpg" alt="Colour Studio" loading="lazy">
+        <span class="gallery-cap">Colour Studio</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-girl-closeup_light.jpg" alt="Close-Up" loading="lazy">
+        <span class="gallery-cap">Close-Up</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-girl-outdoor_light.jpg" alt="Outdoor Light" loading="lazy">
+        <span class="gallery-cap">Outdoor Light</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-redgirl_light.jpg" alt="Red Tones" loading="lazy">
+        <span class="gallery-cap">Red Tones</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-red-chair_light.jpg" alt="Seated Portrait" loading="lazy">
+        <span class="gallery-cap">Seated Portrait</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-cafe-window_light.jpg" alt="Cafe Window" loading="lazy">
+        <span class="gallery-cap">Cafe Window</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-field_light.jpg" alt="Field & Light" loading="lazy">
+        <span class="gallery-cap">Field & Light</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-river_medium.jpg" alt="By the River" loading="lazy">
+        <span class="gallery-cap">By the River</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-boy-hat_light.jpg" alt="Young Subject" loading="lazy">
+        <span class="gallery-cap">Young Subject</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-doll-hug_light.jpg" alt="Child & Toy" loading="lazy">
+        <span class="gallery-cap">Child & Toy</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-doll-white_light.jpg" alt="Soft White" loading="lazy">
+        <span class="gallery-cap">Soft White</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/baby-bw-basket_light.jpg" alt="Newborn · B&W" loading="lazy">
+        <span class="gallery-cap">Newborn · B&W</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/baby-sofa-bow_medium.jpg" alt="Baby Portrait" loading="lazy">
+        <span class="gallery-cap">Baby Portrait</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/ballet-blue-studio_light.jpg" alt="Ballet · Studio" loading="lazy">
+        <span class="gallery-cap">Ballet · Studio</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/ballet-bw-barre_medium.jpg" alt="Ballet · Barre" loading="lazy">
+        <span class="gallery-cap">Ballet · Barre</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/ballet-bw-bench_medium.jpg" alt="Ballet · Bench" loading="lazy">
+        <span class="gallery-cap">Ballet · Bench</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/ballet-floor-stretch_medium.jpg" alt="Ballet · Floor" loading="lazy">
+        <span class="gallery-cap">Ballet · Floor</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-horse_light.jpg" alt="With Companion" loading="lazy">
+        <span class="gallery-cap">With Companion</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-cat_medium.jpg" alt="Pet Portrait" loading="lazy">
+        <span class="gallery-cap">Pet Portrait</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-dog.jpg" alt="Pet · Studio" loading="lazy">
+        <span class="gallery-cap">Pet · Studio</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/portrait-dog-sofa_medium.jpg" alt="Dog on Sofa" loading="lazy">
+        <span class="gallery-cap">Dog on Sofa</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/dog-sofa-chin_medium.jpg" alt="Dog · Resting" loading="lazy">
+        <span class="gallery-cap">Dog · Resting</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/photo1_vintage-gazebo_medium.jpg" alt="Vintage · Gazebo" loading="lazy">
+        <span class="gallery-cap">Vintage · Gazebo</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/photo2_vintage-bw_light.jpg" alt="Vintage · B&W" loading="lazy">
+        <span class="gallery-cap">Vintage · B&W</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/photo3_vintage-pier_medium.jpg" alt="Vintage · Pier" loading="lazy">
+        <span class="gallery-cap">Vintage · Pier</span>
+      </div>
+      <div class="gallery-item">
+        <img src="images/portrait/photo4_vintage-wall_light.jpg" alt="Vintage · Wall" loading="lazy">
+        <span class="gallery-cap">Vintage · Wall</span>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-photo hero-photo-top">
-        <img src="images/portrait/portrait-girl-studio.jpg" alt="Portrait photography by Riki Photos" loading="eager">
-      </div>
-      <div class="hero-photo-row">
-        <div class="hero-photo hero-photo-sm">
-          <img src="images/realestate/111.jpg" alt="Property photography by Riki Photos" loading="eager">
-        </div>
-        <div class="hero-photo hero-photo-sm">
-          <img src="images/portrait/ballet-bw-bench_medium.jpg" alt="Event photography by Riki Photos" loading="eager">
-        </div>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Sessions</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">5★</span><span class="stat-label">Rating</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SERVICES ── -->
-  <section class="services">
-    <div class="section-header">
-      <p class="section-label">What We Offer</p>
-      <h2 class="section-title">Crafted for Every<br>Photography Need</h2>
-    </div>
-    <div class="services-grid">
-
-      <a class="service-card" href="portrait.html">
-        <div class="service-num">01</div>
-        <h3 class="service-name">Portrait Photography</h3>
-        <p class="service-desc">From intimate headshots to family portraits, we capture the authentic essence of every person — with technical precision and a gentle, natural touch.</p>
-        <div class="service-tags">
-          <span class="tag">Family</span>
-          <span class="tag">Headshots</span>
-          <span class="tag">Children</span>
-          <span class="tag">Studio</span>
-        </div>
-        <span class="service-go">View Gallery →</span>
-      </a>
-
-      <a class="service-card" href="realestate.html">
-        <div class="service-num">02</div>
-        <h3 class="service-name">Real Estate Photography</h3>
-        <p class="service-desc">Showcase your property at its finest. Professional real estate photography that helps your listing stand out and sell with confidence.</p>
-        <div class="service-tags">
-          <span class="tag">Residential</span>
-          <span class="tag">Commercial</span>
-          <span class="tag">Interiors</span>
-          <span class="tag">Twilight</span>
-        </div>
-        <span class="service-go">View Gallery →</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <section class="about-section" id="about">
-    <div class="about-visual">
-      <img src="images/portrait/portrait-field_light.jpg" alt="Riki - Professional Photographer Brisbane" loading="lazy">
-    </div>
-    <div class="about-content">
-      <p class="section-label">About Riki</p>
-      <h2 class="section-title">I believe in the<br>beauty of simplicity</h2>
-      <p>Based in Brisbane, I specialise in portrait and property photography — creating images that feel refined, natural, and timeless. I work with a gentle, magazine-like quality that showcases the true essence of every person and place.</p>
-      <p>With an appreciation for authenticity and earthy tones, I welcome collaborations from across Australia and internationally. If that sounds like you, let's create something meaningful together.</p>
-      <blockquote class="quote-block">
-        <p class="quote-text">"Photography is the art of making the ordinary feel extraordinary."</p>
-      </blockquote>
-      <div class="award-block">
-        <div class="award-icon">★</div>
-        <div class="award-body">
-          <span class="award-title">Lord Mayor's Photographic Awards</span>
-          <span class="award-org">Brisbane City Council · 2017</span>
-        </div>
-      </div>
-      <div class="about-actions">
-        <a href="#contact" class="btn-ghost">Work With Me</a>
-        <div class="ip-badge">
-          <span class="ip-badge-icon">©</span>
-          <span class="ip-badge-text">All images copyright Riki Photos</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PROCESS ── -->
-  <section class="process-section">
-    <div class="process-header">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">A Seamless Experience</h2>
-    </div>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <h3 class="step-title">Consultation</h3>
-        <p class="step-desc">We discuss your vision, style preferences, and goals. Relaxed and obligation-free.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <h3 class="step-title">Planning</h3>
-        <p class="step-desc">Location scouting, timing for optimal light, and logistics — all handled for you.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <h3 class="step-title">The Shoot</h3>
-        <p class="step-desc">A relaxed, professional session that brings out the best in every subject.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <h3 class="step-title">Delivery</h3>
-        <p class="step-desc">Expertly edited images in a private gallery within 7 days. Print packages available.</p>
-      </div>
+    <div class="page-cta">
+      <h2>Let's capture <em>your</em> story</h2>
+      <p>Studio, on-location, family, children, pets and personal branding sessions available across Brisbane.</p>
+      <a href="index.html#contact" class="btn-primary">Book a Session</a>
     </div>
   </section>
-
-  <!-- ── CONTACT ── -->
-  <section class="contact-section" id="contact">
-    <p class="section-label">Get In Touch</p>
-    <h2 class="contact-title">Ready to Create<br><em>Something Beautiful?</em></h2>
-    <p class="contact-sub">Based in Brisbane · Available Australia-wide and Internationally</p>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <span class="contact-icon" aria-hidden="true">✉</span>
-        <span class="contact-card-label">Email</span>
-        <a href="mailto:services@riki-tech.com" class="contact-card-val">services@riki-tech.com</a>
-      </div>
-      <div class="contact-card">
-        <span class="contact-icon" aria-hidden="true">◎</span>
-        <span class="contact-card-label">Location</span>
-        <span class="contact-card-val">Brisbane, QLD</span>
-      </div>
-      <div class="contact-card">
-        <span class="contact-icon" aria-hidden="true">◷</span>
-        <span class="contact-card-label">Response Time</span>
-        <span class="contact-card-val">Within 24 hours</span>
-      </div>
-    </div>
-
-    <form class="contact-form" id="contactForm" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="Jane Smith" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="jane@example.com" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="service">Service Interested In</label>
-        <select id="service" name="service">
-          <option value="">Select a service...</option>
-          <option value="portrait">Portrait Photography</option>
-          <option value="realestate">Real Estate Photography</option>
-          <option value="other">Other / Not Sure</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Tell Me About Your Project</label>
-        <textarea id="message" name="message" rows="4" placeholder="Share a bit about what you have in mind..." required></textarea>
-      </div>
-      <button type="submit" class="btn-light">Send Enquiry</button>
-    </form>
-  </section>
-
+  <div class="lightbox" id="lightbox"><span class="lightbox-close">&times;</span><img src="" alt=""></div>
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-logo">
@@ -1327,146 +1394,65 @@ footer {
       <a href="privacy.html">Privacy</a>
     </div>
   </footer>
-
   <script>
-/* ═══════════════════════════════════════════════
-   RIKI PHOTOS — main.js
-   - Image protection (right-click, drag, keyboard)
-   - Sticky nav scroll behaviour
-   - Mobile menu toggle
-   - Smooth scroll
-   - Contact form basic handling
-   © 2025 Riki Photos
-═══════════════════════════════════════════════ */
-
-(function () {
-  'use strict';
-
-  /* ── STICKY NAV ───────────────────────────────── */
-
-  var navbar = document.getElementById('navbar');
-  if (navbar) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 20) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    }, { passive: true });
-  }
-
-  /* ── MOBILE MENU TOGGLE ───────────────────────── */
-
-  var navToggle = document.querySelector('.nav-toggle');
-  var navLinks  = document.querySelector('.nav-links');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Close menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', false);
-      });
-    });
-  }
-
-  /* ── ACTIVE NAV LINK (scroll spy) ─────────────── */
-
-  var sections = document.querySelectorAll('section[id], div[id]');
-  var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
-  function setActiveLink() {
-    var scrollPos = window.scrollY + 100;
-    sections.forEach(function (section) {
-      if (
-        section.offsetTop <= scrollPos &&
-        section.offsetTop + section.offsetHeight > scrollPos
-      ) {
-        navAnchors.forEach(function (a) {
-          a.classList.remove('active');
-          if (a.getAttribute('href') === '#' + section.id) {
-            a.classList.add('active');
-          }
-        });
-      }
-    });
-  }
-
-  window.addEventListener('scroll', setActiveLink, { passive: true });
-
-  /* ── CONTACT FORM ─────────────────────────────── */
-
-  var form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var name    = document.getElementById('name').value.trim();
-      var email   = document.getElementById('email').value.trim();
-      var message = document.getElementById('message').value.trim();
-
-      // Simple validation
-      if (!name || !email || !message) {
-        alert('Please fill in your name, email, and message.');
-        return;
-      }
-
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-
-      // ── TO ACTIVATE FORM SUBMISSION ─────────────────
-      // Option 1: Formspree — replace YOUR_FORM_ID below
-      //   fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ name, email, message })
-      //   });
-      //
-      // Option 2: Netlify Forms — add netlify attribute to <form>
-      //   <form id="contactForm" netlify name="contact">
-      // ────────────────────────────────────────────────
-
-      // Show success message
-      form.style.display = 'none';
-      var success = document.createElement('div');
-      success.className = 'form-success';
-      success.style.display = 'block';
-      success.innerHTML =
-        '<p style="font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--gold-light); margin-bottom: 12px;">Thank you, ' + name + '.</p>' +
-        '<p style="font-size: 13px; color: rgba(245,240,232,0.6); letter-spacing: 0.5px;">Your message has been received. I\'ll be in touch within 24 hours.</p>';
-      form.parentNode.insertBefore(success, form.nextSibling);
-    });
-  }
-
-  /* ── PORTFOLIO ITEM HOVER ZOOM ────────────────── */
-  // Already handled in CSS via .portfolio-item:hover img { transform: scale(1.04) }
-  // Additional JS: add loading="lazy" to below-fold images dynamically
-  var lazyImgs = document.querySelectorAll(
-    '.portfolio-item img, .travel-visual img, .about-visual img'
-  );
-  lazyImgs.forEach(function (img) {
-    if (!img.hasAttribute('loading')) {
-      img.setAttribute('loading', 'lazy');
+  (function () {
+    'use strict';
+    var navbar = document.getElementById('navbar');
+    if (navbar) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 20) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+      }, { passive: true });
     }
-  });
+    var navToggle = document.querySelector('.nav-toggle');
+    var navLinks  = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', false);
+        });
+      });
+    }
 
-  /* ── FADE-IN ON SCROLL ────────────────────────── */
+    /* ── IMAGE PROTECTION ── */
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+    });
+    document.addEventListener('dragstart', function (e) {
+      if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+    });
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) e.preventDefault();
+    });
 
-  var fadeEls = document.querySelectorAll(
-    '.service-card, .portfolio-item, .process-step, .contact-card'
-  );
+    /* ── LIGHTBOX ── */
+    var lb = document.getElementById('lightbox');
+    if (lb) {
+      var lbImg = lb.querySelector('img');
+      document.querySelectorAll('.gallery-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          var img = item.querySelector('img');
+          if (img) { lbImg.src = img.src; lb.classList.add('open'); }
+        });
+      });
+      lb.addEventListener('click', function () {
+        lb.classList.remove('open');
+        lbImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { lb.classList.remove('open'); lbImg.src=''; }
+      });
+    }
 
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(
-      function (entries) {
+    /* ── FADE-IN ── */
+    var fadeEls = document.querySelectorAll('.gallery-item');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -1474,20 +1460,15 @@ footer {
             observer.unobserve(entry.target);
           }
         });
-      },
-      { threshold: 0.1 }
-    );
-
-    fadeEls.forEach(function (el, i) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease ' + (i * 0.08) + 's, transform 0.6s ease ' + (i * 0.08) + 's';
-      observer.observe(el);
-    });
-  }
-
-})();
-
-</script>
+      }, { threshold: 0.08 });
+      fadeEls.forEach(function (el, i) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 0.6s ease ' + ((i%6)*0.06) + 's, transform 0.6s ease ' + ((i%6)*0.06) + 's';
+        observer.observe(el);
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
