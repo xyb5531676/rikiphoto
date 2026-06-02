@@ -446,17 +446,21 @@ a { color: inherit; text-decoration: none; }
   transform: translateX(-50%);
   display: flex;
   gap: 12px;
+  background: rgba(20,15,8,0.35);
+  backdrop-filter: blur(4px);
+  padding: 9px 14px;
+  border-radius: 30px;
 }
 .hero-dot {
   width: 9px; height: 9px;
   border-radius: 50%;
-  border: 0.5px solid rgba(245,240,232,0.7);
-  background: transparent;
+  border: 1px solid rgba(245,240,232,0.85);
+  background: rgba(245,240,232,0.25);
   cursor: pointer;
   padding: 0;
   transition: background 0.25s ease, transform 0.25s ease;
 }
-.hero-dot.active { background: var(--gold-pale); border-color: var(--gold-pale); transform: scale(1.15); }
+.hero-dot.active { background: var(--gold-pale); border-color: var(--gold-pale); transform: scale(1.2); }
 
 /* Small stats badge (bottom-right) */
 .hero-stats {
@@ -524,6 +528,9 @@ a { color: inherit; text-decoration: none; }
 }
 .service-card:hover .service-go { color: var(--dark); transform: translateX(4px); }
 .service-card:hover { background: var(--cream2); border-bottom-color: var(--gold); }
+.service-card--static:hover { background: var(--cream); border-bottom-color: transparent; }
+.service-card--static { cursor: default; }
+.service-go--link:hover { color: var(--dark); }
 
 .service-num {
   font-family: var(--font-heading);
@@ -1140,11 +1147,15 @@ footer {
   .nav-cta { margin: 8px 24px; display: inline-block !important; }
   .nav-toggle { display: flex; }
 
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 60px 24px; }
+  .hero { min-height: auto; height: 78vh; }
+  .hero-overlay { padding: 0 24px; max-width: 100%; }
   .hero-title { font-size: 40px; }
-  .hero-right { height: 50vw; min-height: 280px; }
-  .hero-stats { left: 24px; bottom: 24px; }
+  .hero-sub { font-size: 14px; }
+  .hero-stats { right: 16px; bottom: 80px; padding: 12px 18px; gap: 18px; }
+  .stat-num { font-size: 24px; }
+  .hero-arrow { width: 42px; height: 42px; font-size: 18px; }
+  .hero-arrow.prev { left: 14px; }
+  .hero-arrow.next { right: 14px; }
 
   .section-line { margin: 0 24px; }
   .services { padding: 60px 24px; }
@@ -1290,6 +1301,20 @@ footer {
         </div>
         <span class="service-go">View Gallery →</span>
       </a>
+
+      <div class="service-card service-card--static">
+        <div class="service-num">03</div>
+        <h3 class="service-name">Events &amp; Travel</h3>
+        <p class="service-desc">From weddings and birthday parties to corporate events and intimate gatherings — we capture every candid laugh, heartfelt moment, and spontaneous celebration as it happens, wherever your story takes place.</p>
+        <div class="service-tags">
+          <span class="tag">Weddings</span>
+          <span class="tag">Parties</span>
+          <span class="tag">Corporate</span>
+          <span class="tag">Celebrations</span>
+          <span class="tag">Travel</span>
+        </div>
+        <a href="#contact" class="service-go service-go--link">Enquire Now →</a>
+      </div>
 
     </div>
   </section>
@@ -1576,7 +1601,73 @@ footer {
       observer.observe(el);
     });
   }
+  /* ── IMAGE PROTECTION ──────────────────────────── */
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) e.preventDefault();
+  });
 
+})();
+
+/* ── HERO CAROUSEL (isolated, runs independently) ── */
+(function () {
+  'use strict';
+  function initCarousel() {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
+    if (!slides.length) return;
+    var current = 0;
+    var dotsWrap = document.getElementById('heroDots');
+    var timer = null;
+    var DURATION = 5000;
+    var dots = [];
+
+    if (dotsWrap) {
+      slides.forEach(function (_, i) {
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', function () { goTo(i); });
+        dotsWrap.appendChild(d);
+      });
+      dots = Array.prototype.slice.call(dotsWrap.children);
+    }
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      if (dots[current]) dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (dots[current]) dots[current].classList.add('active');
+      restart();
+    }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+    function restart() { clearInterval(timer); timer = setInterval(next, DURATION); }
+
+    var nextBtn = document.getElementById('heroNext');
+    var prevBtn = document.getElementById('heroPrev');
+    if (nextBtn) nextBtn.addEventListener('click', next);
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+
+    var heroEl = document.getElementById('home');
+    if (heroEl) {
+      heroEl.addEventListener('mouseenter', function () { clearInterval(timer); });
+      heroEl.addEventListener('mouseleave', restart);
+    }
+    restart();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
 })();
 
 </script>
