@@ -60,10 +60,36 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   pointer-events: none;
   -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+/* Ensure all photo containers clip their images properly */
+.hero-photo,
+.hero-photo-top,
+.hero-photo-sm,
+.portfolio-item,
+.travel-visual,
+.about-visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo img,
+.hero-photo-top img,
+.hero-photo-sm img,
+.portfolio-item img,
+.travel-visual img,
+.about-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -168,43 +194,6 @@ a { color: inherit; text-decoration: none; }
   text-decoration: none;
 }
 .btn-light:hover { background: var(--gold-pale); }
-
-/* ── PHOTO PROTECTION SYSTEM ── */
-.protect-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  cursor: default;
-  background: transparent;
-}
-
-.watermark-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 11;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.wm-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.25);
-  text-transform: uppercase;
-  transform: rotate(-35deg);
-  white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.12);
-  user-select: none;
-  -webkit-user-select: none;
-}
 
 /* Placeholder blocks (remove once real images are added) */
 .img-placeholder {
@@ -382,6 +371,7 @@ a { color: inherit; text-decoration: none; }
 .hero-photo {
   position: relative;
   overflow: hidden;
+  min-height: 200px;
 }
 .hero-photo-top { background: linear-gradient(140deg, #D4C9B5, #C4B89E, #B8A888); }
 
@@ -425,29 +415,10 @@ a { color: inherit; text-decoration: none; }
 .stat-div { width: 0.5px; height: 32px; background: var(--border); }
 
 /* ── PROTECTION BAR ── */
-.protection-bar {
-  background: var(--cream);
-  border-top: 0.5px solid var(--border);
-  border-bottom: 0.5px solid var(--border);
-  padding: 16px 60px;
-  display: flex;
-  gap: 32px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.prot-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
-}
-.prot-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-.prot-div { width: 0.5px; height: 20px; background: var(--border); }
+
+
+
+
 
 /* ── SERVICES ── */
 .services { padding: 100px 60px; background: var(--warm-white); }
@@ -536,7 +507,10 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.6s ease;
 }
 .portfolio-item:hover .portfolio-placeholder { transform: scale(1.04); }
-.portfolio-item:hover img { transform: scale(1.04); }
+.portfolio-item:hover img {
+  transform: scale(1.04);
+  transition: transform 0.6s ease;
+}
 
 .portfolio-label {
   position: absolute;
@@ -1103,8 +1077,8 @@ footer {
   .contact-grid { grid-template-columns: 1fr; max-width: 100%; }
   .form-row { grid-template-columns: 1fr; }
   footer { padding: 24px; flex-direction: column; text-align: center; gap: 12px; }
-  .protection-bar { padding: 12px 24px; gap: 16px; }
-  .prot-div { display: none; }
+  
+  
   .contact-title { font-size: 36px; }
 }
 
@@ -1160,34 +1134,16 @@ footer {
         <img src="images/portrait/portrait-girl-studio.jpg" alt="Portrait photography by Riki Photos" loading="eager">
           
         </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-        </div>
       </div>
       <div class="hero-photo-row">
         <div class="hero-photo hero-photo-sm">
           <img src="images/realestate/111.jpg" alt="Property photography by Riki Photos" loading="eager">
             
           </div>
-          <div class="protect-overlay"></div>
-          <div class="watermark-grid" aria-hidden="true">
-            <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-            <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-            <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          </div>
         </div>
         <div class="hero-photo hero-photo-sm">
           <img src="images/portrait/ballet-bw-bench_medium.jpg" alt="Event photography by Riki Photos" loading="eager">
             
-          </div>
-          <div class="protect-overlay"></div>
-          <div class="watermark-grid" aria-hidden="true">
-            <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-            <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-            <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
           </div>
         </div>
       </div>
@@ -1198,10 +1154,6 @@ footer {
       </div>
     </div>
   </section>
-
-  <!-- ── PROTECTION BADGE BAR ── -->
-  <div class="protection-bar" aria-label="Image protection information">
-    <div class="prot-item"><span class="prot-dot" aria-hidden="true"></span>Watermark Protected</div>
     <div class="prot-div"></div>
     <div class="prot-item"><span class="prot-dot" aria-hidden="true"></span>Right-Click Disabled</div>
     <div class="prot-div"></div>
@@ -1227,24 +1179,12 @@ footer {
         <img src="images/portrait/portrait-horse_light.jpg" alt="Portrait photography Brisbane" loading="lazy">
           
         </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-        </div>
         <div class="portfolio-label">Portrait · Brisbane</div>
       </div>
 
       <div class="portfolio-item">
         <img src="images/realestate/222.jpg" alt="Property photography Brisbane" loading="lazy">
           
-        </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
         </div>
         <div class="portfolio-label">Property · Paddington</div>
       </div>
@@ -1253,12 +1193,6 @@ footer {
         <img src="images/portrait/portrait-river_medium.jpg" alt="Studio portrait photography" loading="lazy">
           
         </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-        </div>
         <div class="portfolio-label">Portrait · Studio</div>
       </div>
 
@@ -1266,24 +1200,12 @@ footer {
         <img src="images/portrait/photo2_vintage-bw_light.jpg" alt="Event photography Brisbane" loading="lazy">
           
         </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-        </div>
         <div class="portfolio-label">Event · Brisbane</div>
       </div>
 
       <div class="portfolio-item">
         <img src="images/realestate/333.jpg" alt="Property photography New Farm" loading="lazy">
           
-        </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
         </div>
         <div class="portfolio-label">Property · New Farm</div>
       </div>
@@ -1347,12 +1269,6 @@ footer {
     <div class="travel-inner">
       <div class="travel-visual">
         <img src="images/portrait/ballet-blue-studio_light.jpg" alt="Event photography by Riki Photos" loading="lazy">
-        </div>
-        <div class="protect-overlay"></div>
-        <div class="watermark-grid" aria-hidden="true">
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-          <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
         </div>
         <div class="travel-cities">
           <span class="city-pill">Weddings</span>
@@ -1440,12 +1356,6 @@ footer {
   <section class="about-section" id="about">
     <div class="about-visual">
       <img src="images/portrait/portrait-field_light.jpg" alt="Riki - Professional Photographer Brisbane" loading="lazy">
-      </div>
-      <div class="protect-overlay"></div>
-      <div class="watermark-grid" aria-hidden="true">
-        <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-        <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
-        <span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span><span class="wm-text">© Riki Photos</span>
       </div>
     </div>
     <div class="about-content">
@@ -1586,59 +1496,6 @@ footer {
 
 (function () {
   'use strict';
-
-  /* ── IMAGE PROTECTION ─────────────────────────── */
-
-  // Block right-click on all photo areas
-  document.addEventListener('contextmenu', function (e) {
-    var protectedSelectors = [
-      'img',
-      '.protect-overlay',
-      '.watermark-grid',
-      '.hero-right',
-      '.portfolio-item',
-      '.portfolio-placeholder',
-      '.travel-visual',
-      '.about-visual',
-      '.img-placeholder',
-    ];
-    var isProtected = protectedSelectors.some(function (sel) {
-      return e.target.matches(sel) || e.target.closest(sel);
-    });
-    if (isProtected) {
-      e.preventDefault();
-      return false;
-    }
-  });
-
-  // Block image drag
-  document.addEventListener('dragstart', function (e) {
-    if (e.target.tagName === 'IMG') {
-      e.preventDefault();
-      return false;
-    }
-  });
-
-  // Block Ctrl/Cmd+S (Save Page) and Ctrl/Cmd+U (View Source)
-  document.addEventListener('keydown', function (e) {
-    var key = e.key.toLowerCase();
-    if ((e.ctrlKey || e.metaKey) && (key === 's' || key === 'u')) {
-      e.preventDefault();
-      return false;
-    }
-  });
-
-  // Block long-press selection on photos (mobile)
-  var photoAreas = document.querySelectorAll(
-    '.hero-right, .portfolio-item, .travel-visual, .about-visual, .img-placeholder'
-  );
-  photoAreas.forEach(function (el) {
-    el.addEventListener('selectstart', function (e) { e.preventDefault(); });
-    el.addEventListener('touchstart', function (e) {
-      // prevent long-press context menu on mobile
-      el.setAttribute('data-touch-start', Date.now());
-    }, { passive: true });
-  });
 
   /* ── STICKY NAV ───────────────────────────────── */
 
