@@ -362,12 +362,18 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1.6fr 1fr;
   gap: 2px;
   background: var(--cream2);
   /* Force explicit height so grid rows have real pixel values */
   height: calc(92vh - var(--nav-h));
   min-height: 500px;
+}
+
+/* Hero images: crop from the top so faces/heads stay in frame */
+.hero-photo > img,
+.hero-photo-sm > img {
+  object-position: center 22%;
 }
 
 .hero-photo {
