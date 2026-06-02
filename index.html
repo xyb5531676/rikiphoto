@@ -11,6 +11,9 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.rikiphotos.com">
   <title>Riki Photos — Portrait, Property & Event Photography Brisbane</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <style>
 /* ═══════════════════════════════════════════════
    RIKI PHOTOS — Main Stylesheet
@@ -250,8 +253,20 @@ a { color: inherit; text-decoration: none; }
   color: var(--dark);
   text-transform: uppercase;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
-.logo span { color: var(--gold); font-weight: 400; font-style: italic; }
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+.logo-dot { color: var(--gold); font-weight: 400; font-style: italic; }
 
 .nav-links {
   display: flex;
@@ -848,6 +863,69 @@ footer {
 }
 .footer-links a:hover { color: var(--gold-light); }
 
+/* ── AWARD ELEMENTS ── */
+.hero-award {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  background: rgba(138,115,85,0.07);
+  border: 0.5px solid var(--gold-pale);
+  border-radius: 1px;
+  width: fit-content;
+}
+.hero-award-icon {
+  color: var(--gold);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.hero-award-text {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.award-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--cream);
+  border: 0.5px solid var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  border-radius: 1px;
+}
+.award-icon {
+  font-size: 22px;
+  color: var(--gold);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.award-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.award-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.2;
+}
+.award-org {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
 /* ── PACKAGES ── */
 .packages-section { padding: 80px 60px 100px; background: var(--warm-white); }
 
@@ -1045,7 +1123,10 @@ footer {
 
   <!-- ── NAVIGATION ── -->
   <nav id="navbar">
-    <div class="logo">RIKI<span> · </span>PHOTOS</div>
+    <a href="#home" class="logo">
+      <img src="images/logo.png" alt="Riki Photos Logo" class="logo-img">
+      <span>RIKI<span class="logo-dot"> · </span>PHOTOS</span>
+    </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1063,6 +1144,10 @@ footer {
   <section class="hero" id="home">
     <div class="hero-left">
       <p class="hero-eyebrow">Brisbane · Australia · Worldwide</p>
+      <div class="hero-award">
+        <span class="hero-award-icon">★</span>
+        <span class="hero-award-text">Lord Mayor's Photographic Awards 2017 &mdash; Brisbane City Council</span>
+      </div>
       <h1 class="hero-title">Every Frame<br>Tells <em>Your</em><br>Story</h1>
       <p class="hero-sub">Professional portrait, property and event photography in Brisbane — plus travel photography wherever your journey takes you.</p>
       <div class="hero-actions">
@@ -1311,7 +1396,7 @@ footer {
         <p class="pkg-ideal">Ideal for: small parties, casual gatherings, milestone moments</p>
         <ul class="pkg-list">
           <li>2 hours on-location coverage</li>
-          <li>Up to 80 edited images</li>
+          <li>Up to 10 edited images</li>
           <li>Online gallery delivery (5 days)</li>
           <li>Brisbane metro area</li>
         </ul>
@@ -1325,10 +1410,10 @@ footer {
         <p class="pkg-ideal">Ideal for: birthdays, engagements, corporate events, larger parties</p>
         <ul class="pkg-list">
           <li>4 hours on-location coverage</li>
-          <li>Up to 200 edited images</li>
+          <li>Up to 20 edited images</li>
           <li>Online gallery delivery (7 days)</li>
           <li>Brisbane metro + surrounds</li>
-          <li>1 complimentary A3 print</li>
+          <li>1 complimentary A4 print</li>
         </ul>
         <a href="#contact" class="btn-primary">Enquire</a>
       </div>
@@ -1339,10 +1424,10 @@ footer {
         <p class="pkg-ideal">Ideal for: weddings, full-day corporate events, travel days</p>
         <ul class="pkg-list">
           <li>Up to 8 hours coverage</li>
-          <li>Unlimited edited images</li>
+          <li>Up to 35 edited images</li>
           <li>Online gallery delivery (7 days)</li>
           <li>Australia-wide &amp; international</li>
-          <li>Print package included</li>
+          <li>5 × A4 print package</li>
           <li>Second shooter available</li>
         </ul>
         <a href="#contact" class="btn-ghost">Enquire</a>
@@ -1373,6 +1458,13 @@ footer {
       <blockquote class="quote-block">
         <p class="quote-text">"Photography is the art of making the ordinary feel extraordinary."</p>
       </blockquote>
+      <div class="award-block">
+        <div class="award-icon">★</div>
+        <div class="award-body">
+          <span class="award-title">Lord Mayor's Photographic Awards</span>
+          <span class="award-org">Brisbane City Council · 2017</span>
+        </div>
+      </div>
       <div class="about-actions">
         <a href="#contact" class="btn-ghost">Work With Me</a>
         <div class="ip-badge">
@@ -1471,7 +1563,10 @@ footer {
 
   <!-- ── FOOTER ── -->
   <footer>
-    <div class="footer-logo">Riki · Photos</div>
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Riki Photos" style="width:24px;height:24px;object-fit:contain;opacity:0.4;vertical-align:middle;margin-right:8px;-webkit-user-drag:none;">
+      Riki · Photos
+    </div>
     <div class="footer-copy">© 2025 Riki Photos · All images copyright protected · Brisbane, Australia</div>
     <div class="footer-links">
       <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
