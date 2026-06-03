@@ -1332,19 +1332,26 @@ footer {
 }
 
   
-/* ── GLOBAL IMAGE PROTECTION ── */
+/* ── GLOBAL IMAGE / PAGE PROTECTION ── */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* keep form fields usable */
+input, textarea, select { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
 img {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   -webkit-touch-callout: none;
+  pointer-events: none;
 }
+/* re-enable clicks where needed (lightbox + gallery handled via wrappers) */
+.gallery-item img, .hero-slide-img, .lightbox img, .logo-img, a img { pointer-events: auto; }
 
   </style>
 </head>
@@ -1475,18 +1482,30 @@ img {
       });
     }
 
-    /* ── IMAGE PROTECTION ── */
-    document.addEventListener('contextmenu', function (e) {
-      if (e.target && e.target.tagName === 'IMG') e.preventDefault();
-    });
-    document.addEventListener('dragstart', function (e) {
-      if (e.target && e.target.tagName === 'IMG') e.preventDefault();
-    });
-    document.addEventListener('keydown', function (e) {
-      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) e.preventDefault();
-    });
+    /* ── IMAGE / PAGE PROTECTION ── */
+  // Block right-click anywhere on the page (not just images)
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    return false;
+  });
+  // Block image dragging
+  document.addEventListener('dragstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') { e.preventDefault(); return false; }
+  });
+  // Block key combos: save, view-source, devtools, print, select-all
+  document.addEventListener('keydown', function (e) {
+    var k = (e.key || '').toLowerCase();
+    var ctrl = e.ctrlKey || e.metaKey;
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    if (ctrl && ['s','u','p','a'].indexOf(k) !== -1) { e.preventDefault(); return false; }
+    if (ctrl && e.shiftKey && ['i','j','c'].indexOf(k) !== -1) { e.preventDefault(); return false; }
+  });
+  // Block long-press save on touch devices
+  document.addEventListener('touchstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') { /* allow tap, block callout via CSS */ }
+  }, { passive: true });
 
-    /* ── LIGHTBOX WITH NAV ── */
+  /* ── LIGHTBOX WITH NAV ── */
     var lb = document.getElementById('lightbox');
     if (lb) {
       var lbImg   = lb.querySelector('img');
