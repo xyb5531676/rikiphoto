@@ -525,7 +525,7 @@ a { color: inherit; text-decoration: none; }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
 }
 
@@ -1148,7 +1148,7 @@ footer {
 @media (max-width: 1024px) {
   .hero-title { font-size: 48px; }
   .section-title { font-size: 36px; }
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
   .travel-inner,
   .about-section { grid-template-columns: 1fr; gap: 48px; }
   .about-visual { height: 360px; }
@@ -1164,6 +1164,7 @@ footer {
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
+  .services-grid { grid-template-columns: 1fr; }
   #navbar { padding: 0 24px; }
   .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--warm-white); border-bottom: 0.5px solid var(--border); padding: 16px 0; }
   .nav-links.open { display: flex; }
@@ -1448,6 +1449,12 @@ img {
       <div class="service-card service-card--static">
         <div class="service-num">03</div>
         <h3 class="service-name">Events &amp; Travel</h3>
+        <a href="#contact" class="service-go service-go--link">Enquire Now →</a>
+      </div>
+
+      <div class="service-card service-card--static">
+        <div class="service-num">04</div>
+        <h3 class="service-name">Product Photography</h3>
         <a href="#contact" class="service-go service-go--link">Enquire Now →</a>
       </div>
 
